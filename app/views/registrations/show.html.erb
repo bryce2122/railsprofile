@@ -1,1 +1,115 @@
 <%=@message%>
+ <%if @loggedin%>
+ <h1>Profile Page</h1>
+ <div>
+
+ <ul >
+
+<%@following.each do |f| %>
+<li><%= link_to "User" + f.id.to_s, user_path(f.id)  %></li>
+
+<%end%>
+
+
+
+ </ul>
+ </div>
+ <%= form_for @post,:html => {:class => "foo"} do |f| %>
+  <div class="field" >
+    <%= f.text_area :content, placeholder: "Compose new micropost...", :id => 'text_area' %>
+  </div>
+  <%= f.submit "Post", class: "btn btn-primary", :id => 'but' %>
+<% end %>
+<%if flash[:success] %>
+    <%=flash[:success] %>
+<%end%>
+<%end%>
+<% if @posts %>
+ <!--    <h1 id=phead > Posts </h1> -->
+    <div id="userpost">
+    
+    
+    
+    <% @posts.reverse.each do |s| %>
+    <div class = "iposts">
+    <ul class="list-group">
+     <li id="postheader"  class= "list-group-item"> Post </li>
+    <li class = "list-group-item"> <%=s.content %> </li>
+    </ul>
+    <% if @all %>
+    <% comment = @all.select{|c| c.post_id == s.id}.reverse %>
+<ul class="list-group">
+    <li id = "commentheader" class="list-group-item"> Comments</li>
+    <%comment.each do |c| %>
+   
+  <li class="list-group-item"> <%=c.content %></li>
+  
+
+
+
+
+
+
+
+
+    
+    <%end%>
+    </ul>
+    <%end%>
+
+    <%= form_for @comments,:html => {:class => "com"} do |f| %>
+  
+<div class="field" >
+    <%= f.text_field :content, placeholder: "name" %>
+  </div>
+
+  <div class="field" >
+    <%= f.text_area :content, placeholder: "Make a Comment...", :id => 'text_area' %>
+  </div>
+  
+
+
+  <%= hidden_field_tag 'selected', s.id  %>
+  <%= f.submit "Comment", class: "btn btn-primary", :id => 'but' %>
+    <%end%>
+    </div>
+    <%end%>
+    </div>
+    <%end%>
+     
+<%follow = "false"%>
+
+<%@following.each do |f| %>
+<% if f.id.to_s == @params.to_s %>
+<%follow = "true" %>
+<%end%>
+<%end%>
+
+
+
+
+
+
+<%if current_user.id.to_s == @params.to_s%>
+
+<%elsif follow == "true"%>
+
+
+<%= form_for @follow, :url => {:controller => "relationships", :action => "delete"},:html => {:class => "follow"}, remote: true do |f|   %>
+  <%= hidden_field_tag :follo, @params  %>
+  <%= f.button :unfollow,class: "followpress"  %>
+<% end %>
+
+
+<%else%>
+
+<%= form_for @follow,:html => {:class => "follow"}, remote: true do |f|   %>
+  <%= hidden_field_tag :follo, @params  %>
+  <%= f.button :follow, class: "followpress"  %>
+<% end %>
+<%end%>
+
+
+
+
+

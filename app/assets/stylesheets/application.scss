@@ -16,6 +16,15 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+body {
+
+    overflow-x: hidden;
+}
+
+
+
+
 .c {
 
     position: relative;
@@ -61,4 +70,96 @@ width: 200px;
 body {
 
     background-color: gray;
+}
+
+.foo {
+   position: relative;
+   top: 150px;
+   left: 520px;
+}
+
+#text_area {
+
+    width: 300px;
+    height: 100px;
+}
+
+#but { 
+
+    width: 300px;
+    background-color: green;
+}
+
+#flist {
+
+    position: relative;
+    right: 500px;
+}
+#userpost {
+
+    position: relative;
+    top: 200px;
+    text-align: center;
+}
+.iposts {
+
+margin-top: 100px;
+}
+
+#phead {
+
+    position: absolute;
+    left: 625px;
+    bottom: 300px;
+}
+.list-group-item {
+
+    width: 400px;
+    text-align: center;
+    position: relative;
+    right: 100px;
+
+}
+.list-group {
+
+    text-align: center;
+    position: relative;
+    left: 575px;
+}
+
+#commentheader {
+
+    background-color: blue;
+    color: white;
+}
+
+#postheader {
+
+    background-color: red;
+    color: white;
+}
+
+.follow {
+
+    position: relative;
+    bottom: 300px;
+}
+
+.editform {
+    position: relative;
+    left: 500px;
+}
+
+#e {
+
+    color: blue;
+}
+
+#p {
+    color: blue;
+}
+
+.followpress{
+    position: relative;
+    bottom: 500px;
 }
