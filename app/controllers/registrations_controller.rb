@@ -4,8 +4,14 @@ class RegistrationsController < Devise::RegistrationsController
     @message = "This route shows all info for an individual #{@user.email}."
    @post = current_user.posts.build
   @posts = Post.where(user_id: @user.id)
- @c = Post.find(1)
+   
+  begin
+   @c = Post.first
     @comments = @c.comments.build
+  rescue Exception => e
+   p "post doesnt exist" 
+  end
+  
  
  @params = params[:id]
  @current = User.find(current_user.id)

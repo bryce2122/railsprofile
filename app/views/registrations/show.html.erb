@@ -4,48 +4,30 @@
 <h1 id="np"> <%="User" + @params%></h1>
 
 <%end%>
-
-
-
-
-
-
- <%if @loggedin%>
+<%# CHECKING TO SEE IF LOGGED In %>
+<%if current_user.id.to_s == @params.to_s%>
  <h1>Profile Page</h1>
- 
-
  <div>
-
- <ul class="lf" >
-
+  <ul class="lf" >
 <%@following.each do |f| %>
 <li class="lf"><%= link_to "User" + f.id.to_s, user_path(f.id)  %></li>
-
 <%end%>
-
-
-
- </ul>
- </div>
+</ul>
+</div>
+ 
+<%# BOOTSTRAP GRID FOR FORMATTING POSTS! %>
  <div class="row">
   
 
-  <div class="col-md-4">
+<div class="col-md-4">
 
-  </div>
+</div>
   
 
-  <div class="col-md-4">
+<div class="col-md-4" id=postform>
 
-
-
-
-
-
-
-
-
-   <%= form_for @post,:html => {:class => "foo"} do |f| %>
+<%# FORM TO SUBMIT POSTS %>
+<%= form_for @post,:html => {:class => "foo"} do |f| %>
   <div class="field" >
     <%= f.text_area :content, placeholder: "Compose new micropost...", :id => 'text_area' %>
   </div>
@@ -53,30 +35,23 @@
 <% end %></div>
 
 
+<%# FLASH ON SUCCESSFUL POST %>
 
 
-
-
-<%if flash[:success] %>
-    <%=flash[:success] %>
-<%end%>
-<div class="col-md-4">
+  
 
 </div>
 
-
-
-
-
-</div>
-
-
 <%end%>
-
+<%# GREETING for other user pages %>
 <% if(!@loggedin) %>
 
 <h1> WELCOME </h1>
 <%end%>
+
+<%# TOGGLING FOLLOW ON UNFOLLOW USING AJAX REQUESTS %>
+
+
 <%follow = "false"%>
 
 <%@following.each do |f| %>
@@ -85,13 +60,10 @@
 <%end%>
 <%end%>
 
-
-
-
 <%if current_user.id.to_s == @params.to_s%>
 
 <%elsif follow == "true"%>
-
+<%# UNFOLLOW REQUEST %>
 
 <%= form_for @follow, :url => {:controller => "relationships", :action => "delete"},:html => {:class => "follow"}, remote: true do |f|   %>
   <%= hidden_field_tag :follo, @params  %>
@@ -100,7 +72,7 @@
 
 
 <%else%>
-
+<%# FOLLOW REQUEST %>
 <%= form_for @follow,:html => {:class => "follow"}, remote: true do |f|   %>
   <%= hidden_field_tag :follo, @params  %>
   <%= f.button :follow, class: "followpress"  %>
@@ -109,25 +81,10 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+<%# DISPLAYING POSTS %>
+<div id = pgroup>
 <% if @posts %>
  <!--    <h1 id=phead > Posts </h1> -->
-    
-    
-    
-    
     <% @posts.reverse.each do |s| %>
     <div class="row">
   <div class="col-md-4">
@@ -135,10 +92,6 @@
   </div>
 
 <div class="col-md-4">
-
-   
-
-
     <ul class="list-group">
      <li id="postheader"  class= "list-group-item"> Post </li>
     <li class = "list-group-item"> <%=s.content %> </li>
@@ -181,7 +134,7 @@
 
 <%end%>
      
-    
+ </div>   
 
 
 

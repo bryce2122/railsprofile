@@ -25,6 +25,7 @@ body {
    
     background: blue;
     overflow-x: hidden;
+    width: 1366px;
 }
 
 
@@ -88,8 +89,21 @@ body {
 }
 
 .foo {
+    width: 200px;
+    margin: 0 auto;
+    position: absolute;
+    left: 485px;
+
   
 }
+
+#pgroup {
+position: relative;
+top: 150px;
+    
+}
+
+
 
 #text_area {
 
