@@ -6,7 +6,7 @@ get "/"  => "home#index"
 
 devise_scope :user do 
 get     "/users/:id"     => 'registrations#show' , as: "user"
-get '/users/edit/:id', to: 'devise/registrations#edit', as: "edit"
+get '/users/edit/:id' =>    'registrations#edit', as: "edit"
 end
 
 post "/create" => 'users#create', as: "create_user"

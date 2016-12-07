@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This web application functions as a simple microblog.
 
-Things you may want to cover:
+It allows users to user make posts and comment on these posts.
 
-* Ruby version
+As Demo, the routes for each user are users/:id
 
-* System dependencies
+A User can follow and unfollow other users. When followed, a link
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+to the user's homepage is appended on to the followers profile page.

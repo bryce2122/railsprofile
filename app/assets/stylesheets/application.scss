@@ -161,7 +161,9 @@ body {
 
 .editform {
     position: relative;
-    left: 500px;
+    top: 120px;
+    width: 200px;
+    margin: 0 auto
 }
 
 #e {
@@ -190,4 +192,9 @@ body {
     color: black;
 
 
+}
+
+#ed {
+    text-align: center;
+    margin: 0 auto
 }
