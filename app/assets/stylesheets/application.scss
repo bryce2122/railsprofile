@@ -17,10 +17,25 @@
 @import "bootstrap";
 
 
-body {
 
+
+
+
+body {
+   
+    background: blue;
     overflow-x: hidden;
 }
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -73,76 +88,75 @@ body {
 }
 
 .foo {
-   position: relative;
-   top: 150px;
-   left: 520px;
+  
 }
 
 #text_area {
 
-    width: 300px;
+    width: 400px;
     height: 100px;
 }
 
 #but { 
 
-    width: 300px;
+    width: 400px;
     background-color: green;
 }
 
 #flist {
 
-    position: relative;
-    right: 500px;
+    // position: relative;
+    // right: 500px;
 }
 #userpost {
 
-    position: relative;
-    top: 200px;
-    text-align: center;
+    // position: relative;
+    // top: 200px;
+    // text-align: center;
 }
 .iposts {
 
-margin-top: 100px;
+// margin-top: 100px;
 }
 
 #phead {
 
-    position: absolute;
-    left: 625px;
-    bottom: 300px;
+    // position: absolute;
+    // left: 625px;
+    // bottom: 300px;
 }
 .list-group-item {
 
     width: 400px;
-    text-align: center;
-    position: relative;
-    right: 100px;
+    // text-align: center;
+    // position: relative;
+    // right: 100px;
 
 }
 .list-group {
 
-    text-align: center;
-    position: relative;
-    left: 575px;
+    // text-align: center;
+    // position: relative;
+    // left: 575px;
 }
 
 #commentheader {
 
-    background-color: blue;
+    background-color: brown;
     color: white;
 }
 
 #postheader {
 
-    background-color: red;
+    background-color: orange;
     color: white;
+    margin-top: 50px;
 }
 
 .follow {
 
-    position: relative;
-    bottom: 300px;
+    // position: relative;
+    // bottom: 300px;
 }
 
 .editform {
@@ -160,6 +174,20 @@ margin-top: 100px;
 }
 
 .followpress{
-    position: relative;
-    bottom: 500px;
+    position: absolute;
+   
+    
+}
+
+#np {
+
+  
+}
+
+
+.lf {
+    font-size: 60px;
+    color: black;
+
+
 }

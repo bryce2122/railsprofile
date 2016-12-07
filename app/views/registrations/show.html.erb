@@ -1,12 +1,25 @@
 <%=@message%>
+ 
+ <%if current_user.id.to_s != @params.to_s %>
+<h1 id="np"> <%="User" + @params%></h1>
+
+<%end%>
+
+
+
+
+
+
  <%if @loggedin%>
  <h1>Profile Page</h1>
+ 
+
  <div>
 
- <ul >
+ <ul class="lf" >
 
 <%@following.each do |f| %>
-<li><%= link_to "User" + f.id.to_s, user_path(f.id)  %></li>
+<li class="lf"><%= link_to "User" + f.id.to_s, user_path(f.id)  %></li>
 
 <%end%>
 
@@ -14,69 +27,56 @@
 
  </ul>
  </div>
- <%= form_for @post,:html => {:class => "foo"} do |f| %>
+ <div class="row">
+  
+
+  <div class="col-md-4">
+
+  </div>
+  
+
+  <div class="col-md-4">
+
+
+
+
+
+
+
+
+
+   <%= form_for @post,:html => {:class => "foo"} do |f| %>
   <div class="field" >
     <%= f.text_area :content, placeholder: "Compose new micropost...", :id => 'text_area' %>
   </div>
   <%= f.submit "Post", class: "btn btn-primary", :id => 'but' %>
-<% end %>
+<% end %></div>
+
+
+
+
+
+
 <%if flash[:success] %>
     <%=flash[:success] %>
 <%end%>
+<div class="col-md-4">
+
+</div>
+
+
+
+
+
+</div>
+
+
 <%end%>
-<% if @posts %>
- <!--    <h1 id=phead > Posts </h1> -->
-    <div id="userpost">
-    
-    
-    
-    <% @posts.reverse.each do |s| %>
-    <div class = "iposts">
-    <ul class="list-group">
-     <li id="postheader"  class= "list-group-item"> Post </li>
-    <li class = "list-group-item"> <%=s.content %> </li>
-    </ul>
-    <% if @all %>
-    <% comment = @all.select{|c| c.post_id == s.id}.reverse %>
-<ul class="list-group">
-    <li id = "commentheader" class="list-group-item"> Comments</li>
-    <%comment.each do |c| %>
-   
-  <li class="list-group-item"> <%=c.content %></li>
-  
 
+<% if(!@loggedin) %>
 
-
-
-
-
-
-
-    
-    <%end%>
-    </ul>
-    <%end%>
-
-    <%= form_for @comments,:html => {:class => "com"} do |f| %>
-  
-<div class="field" >
-    <%= f.text_field :content, placeholder: "name" %>
-  </div>
-
-  <div class="field" >
-    <%= f.text_area :content, placeholder: "Make a Comment...", :id => 'text_area' %>
-  </div>
-  
-
-
-  <%= hidden_field_tag 'selected', s.id  %>
-  <%= f.submit "Comment", class: "btn btn-primary", :id => 'but' %>
-    <%end%>
-    </div>
-    <%end%>
-    </div>
-    <%end%>
-     
+<h1> WELCOME </h1>
+<%end%>
 <%follow = "false"%>
 
 <%@following.each do |f| %>
@@ -84,8 +84,6 @@
 <%follow = "true" %>
 <%end%>
 <%end%>
-
-
 
 
 
@@ -108,6 +106,90 @@
   <%= f.button :follow, class: "followpress"  %>
 <% end %>
 <%end%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% if @posts %>
+ <!--    <h1 id=phead > Posts </h1> -->
+    
+    
+    
+    
+    <% @posts.reverse.each do |s| %>
+    <div class="row">
+  <div class="col-md-4">
+
+  </div>
+
+<div class="col-md-4">
+
+   
+
+
+    <ul class="list-group">
+     <li id="postheader"  class= "list-group-item"> Post </li>
+    <li class = "list-group-item"> <%=s.content %> </li>
+    </ul>
+    <% if @all %>
+    <% comment = @all.select{|c| c.post_id == s.id}.reverse %>
+    <% if comment.length > 0 %>
+<ul class="list-group">
+    <li id = "commentheader" class="list-group-item"> Comments</li>
+    <%comment.each do |c| %>
+   
+  <li class="list-group-item"> <%= c.content %></li>
+ 
+    
+    
+<%end%>
+</ul>
+<%end%>
+
+
+<%= form_for @comments,:html => {:class => "com"} do |f| %>
+  
+
+  <div class="field" >
+    <%= f.text_area :content, placeholder: "Make a Comment...", :id => 'text_area' %>
+  </div>
+  
+
+
+  <%= hidden_field_tag 'selected', s.id  %>
+  <%= f.submit "Comment", class: "btn btn-primary", :id => 'but' %>
+    <%end%>
+    </div>
+     </div>
+
+    <%end%>
+    <%end%>
+     
+
+
+<%end%>
+     
+    
+
+
+
+
+
+
+
+
 
 
 

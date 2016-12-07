@@ -28,19 +28,7 @@ else
 
   end
 
-def delete
-user = User.find_by_id(current_user.id)
-following = @user.following
-
-following.each do |f|
-  if following.id == params[:follo]
-    f.destroy
-  end
-end
-
-
-
-end
+  
 
 
 
