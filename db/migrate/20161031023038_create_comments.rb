@@ -1,6 +1,6 @@
 class CreateComments < ActiveRecord::Migration[5.0]
   def change
-    def change
+   
   create_table :comments do |t|
       t.text :content
       t.string :name
@@ -10,4 +10,4 @@ class CreateComments < ActiveRecord::Migration[5.0]
     end
     end
   end
-end
+
